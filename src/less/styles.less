@@ -1,0 +1,309 @@
+@import './variables.less';
+@import './reset.less';
+//Шрифт
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat.ttf") format("truetype");
+}
+html {
+  font-family: "Montserrat",Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  color: @baseFontColor;
+}
+html,body{
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+}
+body{
+  height: auto;
+  background: @bodyBgColor;
+}
+//Скроллбар
+::-webkit-scrollbar{
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  background-color: #C4C4C4;
+}
+::-webkit-scrollbar-thumb{
+  appearance: none;
+  border-radius: 10px;
+  position: relative;
+  background: @scrollbarColor;
+}
+#app{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
+}
+.stop-scroll{
+  position: relative;
+  overflow: hidden;
+  &:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: rgba(0,0,0,.25);
+    z-index: 10;
+  }
+}
+.container{
+  width: 100%;
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.content{
+  flex: 1 1 auto;
+}
+//Icons
+.close-icon{
+  width: 100%;
+  max-width: 15px;
+  height: 100%;
+  max-height: 15px;
+}
+.inst-icon{
+  width: 100%;
+  max-width: 18px;
+  height: 100%;
+  max-height: 18px;
+}
+.drop-arrow-icon{
+  width: 100%;
+  max-width: 8px;
+  height: 100%;
+  max-height: 5px;
+}
+//Хлебные крошки
+.breadcrumbs{
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.4em;
+  &__list{
+    display: flex;
+  }
+  li{
+    &:not(:last-child){
+      &:after{
+        content: ">";
+        padding: 0 3px;
+      }
+    }
+  }
+  &__link{
+    color:@breadcrumbColor;
+    transition: all .3s ease-in-out;
+    &:hover{
+      color:@breadcrumbHoverColor;
+      transition: all .3s ease-in-out;
+    }
+    &.active{
+      color:@breadcrumbHoverColor;
+    }
+  }
+}
+//О компании
+.about-company{
+  margin-bottom: 80px;
+  &__title{
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.3em;
+
+  }
+  &__text{
+    font-size: 18px;
+    line-height: 1.4em;
+    p{
+      &:not(:last-child){
+        margin-bottom: 20px;
+      }
+    }
+
+  }
+}
+//input
+.range{
+  &__range-input{
+    position: relative;
+    display: block;
+    padding-bottom: 28px;
+  }
+  &__output{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    &-item{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: auto;
+      border: 1px solid #C4C4C4;
+      border-radius: 4px;
+      padding: 6px 12px;
+      color: #A0A0A0;
+      span{
+        color: @baseFontColor;
+      }
+    }
+  }
+}
+input[type = "range"]{
+    position: absolute;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #C4C4C4;
+    outline: none;
+    &::-webkit-slider-thumb {
+      pointer-events: all;
+      position: relative;
+      z-index: 1;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 2px rgba(50, 50, 71, 0.06), 0 2px 4px rgba(50, 50, 71, 0.06);
+      cursor: pointer;
+      transition: .2s ease-in-out;
+    }
+}
+.switch-input{
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  input[type = "checkbox"]{
+    appearance: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + .slider-input{
+      background-color: @siteBaseColor;
+    }
+    &:focus + .slider-input{
+      box-shadow: 0 0 1px @siteBaseColor;
+    }
+    &:checked + .slider-input:before{
+      transform: translateX(13px);
+      transition: all .3s ease-in-out;
+    }
+  }
+  .slider-input{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: all .3s ease-in-out;
+    &:before{
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 2px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 34px;
+      transition: all .3s ease-in-out;
+    }
+  }
+}
+.checkbox-custom{
+  input[type = "checkbox"]{
+    display: none;
+    padding: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    &:checked + label:after{
+      content: '';
+      position: absolute;
+      display: block;
+      top: 4px;
+      left: 9px;
+      width: 6px;
+      height: 14px;
+      border: solid @siteBaseColor;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) ;
+    }
+    &:checked + label:before{
+      border-color: @siteBaseColor;
+      transition: all .2s ease-in-out;
+    }
+    &:checked + label{
+      color: @siteBaseColor;
+      transition: all .2s ease-in-out;
+    }
+  }
+  label{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    &:before{
+      content:'';
+      appearance: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 22px;
+      position: relative;
+      background-color: transparent;
+      border: 2px solid #A0A0A0;
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+      padding: 10px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+  }
+}
+//Медиа запросы
+@media only screen and (max-width: 768px){
+  .content{
+    padding-top: calc( @headerMobHeight + 24px);
+  }
+  .breadcrumbs{
+    font-size: 12px;
+  }
+  .about-company{
+    margin-bottom: 60px;
+    &__title{
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    &__text{
+      font-size: 14px;
+    }
+  }
+  .range{
+    &__output-item{
+      font-size: 12px;
+    }
+  }
+  .checkbox-custom{
+    label{
+      font-size: 12px;
+    }
+  }
+}

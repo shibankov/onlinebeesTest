@@ -1,0 +1,199 @@
+@siteBaseColor: #359C31;
+@baseFontColor: #1A1A1A;
+@headerMobHeight:50px;
+@sidebarBg: #fff;
+//Icons
+.filter-icon{
+  width: 100%;
+  max-width: 16px;
+  height: 100%;
+  max-height: 16px;
+}
+//Sidebar
+.sidebar-mob{
+  &__header{
+    display: none;
+  }
+}
+.sidebar {
+  width: 100%;
+  max-width: 239px;
+
+  &__mob-row{
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-weight: 600;
+    &-icon{
+      margin-right: 8px;
+    }
+  }
+  &__col-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.4em;
+    color: #333333;
+    &-arrow{
+      display: none;
+    }
+  }
+}
+.categories{
+  margin-bottom: 32px;
+  &__list{
+    display: flex;
+    flex-direction: column;
+    padding-left: 21px;
+    li{
+      &:not(:last-child){
+        margin-bottom: 12px;
+      }
+    }
+    &-link{
+      width: 100%;
+      max-width: 167px;
+      color: @baseFontColor;
+      &:hover{
+        color: @baseFontColor;
+      }
+    }
+    &-title{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 136px;
+      padding: 4px 12px;
+      margin-bottom: 8px;
+      text-align: center;
+      border-radius: 4px;
+      color: #fff;
+      background: @siteBaseColor;
+    }
+  }
+}
+.discount{
+  margin-bottom: 39px;
+}
+.materials{
+  margin-bottom: 32px;
+  &__item{
+    margin-bottom: 8px;
+  }
+  &__link-all{
+    color: #A0A0A0;
+    border-bottom: 1px dashed #A0A0A0;
+    transition: all .4s ease-in-out;
+    &:hover{
+      border-bottom: none;
+      transition: all .4s ease-in-out;
+    }
+  }
+}
+//Медиа запросы
+@media only screen and (max-width: 768px){
+  .sidebar-mob{
+    &__header{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      margin-bottom: 18px;
+      &:after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left:-16px;
+        width: calc(100% + 32px);
+        height: 2px;
+        background: #C4C4C4;
+
+      }
+      &-arrow{
+        transform: rotate(90deg);
+        svg path{
+          fill: #1A1A1A;
+        }
+      }
+      &-title{
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 1.4em;
+      }
+      &-close-icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+  }
+  .sidebar{
+    position: fixed;
+    //right: 0;
+    right: -100%;
+    height: 100%;
+    top: calc(@headerMobHeight + 5px);
+    z-index: 9999;
+    overflow: auto;
+    padding: 0 16px 88px;
+    background: @sidebarBg;
+    box-shadow: 0 4px 5px rgba(50, 50, 71, 0.16);
+    transition: all .4s ease-in-out .1s;
+    &.fade-in{
+      right: 0;
+      transition: all .4s ease-in-out;
+    }
+    &__row{
+      cursor: pointer;
+    }
+    &__mob-row{
+      display: flex;
+      padding-bottom: 26px;
+      border-bottom: 2px solid #C4C4C4;
+      cursor: pointer;
+    }
+    &__col-body{
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .1s ease-in-out ,visibility .1s ease-in-out ,height .4s ease-in-out .2s;
+      &.fade-in{
+        overflow: visible;
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+        transition: visibility .3s ease-in-out .1s,opacity .3s ease-in-out .1s,height .4s ease-in-out;
+      }
+    }
+    &__col-title{
+      &-arrow{
+        display: block;
+        transition: all .4s ease-in-out;
+        &.rotate{
+          transform: rotate(180deg);
+          transition: all .4s ease-in-out;
+        }
+      }
+    }
+    .categories{
+      &__list{
+        font-size: 12px;
+      }
+    }
+    .discount{
+      &__title{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+}
