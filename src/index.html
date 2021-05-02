@@ -9,6 +9,7 @@
 <body>
 <!-- TestOnlineBees begin -->
   <div id="app">
+    <div class="overlay"></div>
     <header class="header container">
       <div class="header-top">
         <a href="index.html" class="header__logo">
@@ -20,14 +21,14 @@
           <div class="search">
             <input type="text" class="search__placeholder" placeholder="Поиск товара">
             <div class="search__icon">
-              <svg>
+              <svg class="search-icon">
                 <use xlink:href="#search-icon"></use>
               </svg>
             </div>
           </div>
         </div>
         <div class="header__contacts">
-          <a href="tel:+7 987 654-32-10" class="header__contacts-phone">
+          <a href="tel:+7 987 654-32-10" class="header__contacts-phone phone-num">
             +7 987 654-32-10
           </a>
           <div class="header__contacts-regime">
@@ -143,24 +144,24 @@
       <div class="header-mob__row">
         <div class="header-mob__col">
           <a href="/" class="header-mob__burger">
-            <svg class="burger-icon">
-              <use xlink:href="#burger-icon-mob"></use>
+            <svg class="burger-icon-mob burger-icon">
+              <use xlink:href="#burger-icon"></use>
             </svg>
           </a>
           <a href="/" class="header-mob__logo">
             <svg class="header-mob-logo">
-              <use xlink:href="#header-mob-logo"></use>
+              <use xlink:href="#header-logo"></use>
             </svg>
           </a>
         </div>
         <div class="header-mob__col">
           <div class="header-mob__search">
-            <svg>
-              <use xlink:href="#search-mob-icon"></use>
+            <svg class="search-icon-mob search-icon">
+              <use xlink:href="#search-icon"></use>
             </svg>
           </div>
           <a href="tel:+7 987 654-32-10" class="header-mob__phone">
-            <svg>
+            <svg class="phone-icon">
               <use xlink:href="#phone-mob-icon"></use>
             </svg>
           </a>
@@ -276,7 +277,7 @@
           </ul>
         </nav>
         <div class="dropdown-mob__footer">
-          <a href="tel:+7 987 654-32-10" class="dropdown-mob__phone">
+          <a href="tel:+7 987 654-32-10" class="dropdown-mob__phone phone-num">
             +7 987 654-32-10
           </a>
           <div class="dropdown-mob__regime">
@@ -286,8 +287,8 @@
             example@example.ru
           </a>
 
-          <div class="dropdown-mob__social-network">
-            <a href="/" class="dropdown-mob__social-network-item">
+          <div class="dropdown-mob__social-network social-network">
+            <a href="/" class="social-network__item">
               <svg class="inst-icon">
                 <use xlink:href="#inst-icon"></use>
               </svg>
@@ -312,7 +313,7 @@
         </ul>
       </div>
       <div class="catalog">
-        <div class="catalog__title">
+        <div class="catalog__title page-title">
           Мягкая мебель
         </div>
         <div class="catalog__wrapper">
@@ -327,8 +328,8 @@
                 Мягкая мебель
               </div>
               <a href="/" class="sidebar-mob__close-icon">
-                <svg class="close-icon">
-                  <use xlink:href="#sidebar-close-icon"></use>
+                <svg class="sidebar-close-icon close-icon">
+                  <use xlink:href="#close-icon"></use>
                 </svg>
               </a>
             </div>
@@ -396,28 +397,33 @@
                 </div>
               </div>
               <div class="price__body sidebar__col-body">
-                <div class="range__range-input">
-                  <input type="range" min="50" max="100" value="100" step="1" id="priceRange">
-                  <input type="range" min="50" max="100" value="0" step="1" id="priceRange2">
-                </div>
-                <div class="range__output">
-                  <div class="range__output-item">
-                    до&nbsp;<span>343 342</span>
+                <form action="#">
+                  <div class="range__range-input">
+                    <div id="slider-range-price"></div>
                   </div>
-                  <div class="range__output-item">
-                    до&nbsp;<span>343 342</span>
+                  <div class="range__output">
+                    <div class="range__output-item">
+                      <span>до</span>
+                      <input type="number" id="price-output" readonly>
+                    </div>
+                    <div class="range__output-item">
+                      <span>до</span>
+                      <input type="number" id="price-output2" readonly>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
             <div class="sidebar__discount discount ">
-              <div class="discount__title sidebar__col-title">
-                Товары со скидкой
-                <label class="discount__switch switch-input">
-                  <input type="checkbox">
-                  <span class="slider-input"></span>
-                </label>
-              </div>
+              <form action="#">
+                <div class="discount__title sidebar__col-title">
+                  Товары со скидкой
+                  <label class="discount__switch switch-input">
+                    <input type="checkbox">
+                    <span class="slider-input"></span>
+                  </label>
+                </div>
+              </form>
             </div>
             <div class="sidebar__materials materials sidebar__row">
               <div class="materials__title sidebar__col-title">
@@ -429,73 +435,75 @@
                 </div>
               </div>
               <div class="materials__body sidebar__col-body">
-                <div class="materials__item">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" checked="checked" id="checkbox1">
-                    <label for="checkbox1">
-                      ABS пластик
-                    </label>
+                <form action="#">
+                  <div class="materials__item">
+                    <div class="checkbox-custom">
+                      <input type="checkbox" checked="checked" id="checkbox1">
+                      <label for="checkbox1">
+                        ABS пластик
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div class="materials__item">
-                  <div class="checkbox-custom">
-                    <input type="checkbox"  id="checkbox2">
-                    <label for="checkbox2">
-                      Amicor TM
-                    </label>
+                  <div class="materials__item">
+                    <div class="checkbox-custom">
+                      <input type="checkbox"  id="checkbox2">
+                      <label for="checkbox2">
+                        Amicor TM
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div class="materials__item">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" id="checkbox3">
-                    <label for="checkbox3">
-                      Eco Foam
-                    </label>
+                  <div class="materials__item">
+                    <div class="checkbox-custom">
+                      <input type="checkbox" id="checkbox3">
+                      <label for="checkbox3">
+                        Eco Foam
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div class="materials__item">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" id="checkbox4">
-                    <label for="checkbox4">
-                      PLA пластик
-                    </label>
+                  <div class="materials__item">
+                    <div class="checkbox-custom">
+                      <input type="checkbox" id="checkbox4">
+                      <label for="checkbox4">
+                        PLA пластик
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div class="materials__item">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" checked="checked" id="checkbox5">
-                    <label for="checkbox5">
-                      Акрил
-                    </label>
+                  <div class="materials__item">
+                    <div class="checkbox-custom">
+                      <input type="checkbox" checked="checked" id="checkbox5">
+                      <label for="checkbox5">
+                        Акрил
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div class="materials__item">
-                  <div class="checkbox-custom">
-                    <input type="checkbox"  id="checkbox6">
-                    <label for="checkbox6">
-                      Алюминиевый сплав
-                    </label>
+                  <div class="materials__item">
+                    <div class="checkbox-custom">
+                      <input type="checkbox"  id="checkbox6">
+                      <label for="checkbox6">
+                        Алюминиевый сплав
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div class="materials__item">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" id="checkbox7">
-                    <label for="checkbox7">
-                      Алюминий
-                    </label>
+                  <div class="materials__item">
+                    <div class="checkbox-custom">
+                      <input type="checkbox" id="checkbox7">
+                      <label for="checkbox7">
+                        Алюминий
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div class="materials__item">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" id="checkbox8">
-                    <label for="checkbox8">
-                      Бамбук
-                    </label>
+                  <div class="materials__item">
+                    <div class="checkbox-custom">
+                      <input type="checkbox" id="checkbox8">
+                      <label for="checkbox8">
+                        Бамбук
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <a href="/" class="materials__link-all">
-                  Показать все
-                </a>
+                  <a href="/" class="materials__link-all">
+                    Показать все
+                  </a>
+                </form>
               </div>
             </div>
             <div class="sidebar__height height range sidebar__row">
@@ -508,18 +516,21 @@
                 </div>
               </div>
               <div class="height__body sidebar__col-body">
-                <div class="range__range-input">
-                  <input type="range" min="50" max="100" value="100" step="1" id="priceRange">
-                  <input type="range" min="50" max="100" value="0" step="1" id="priceRange2">
-                </div>
-                <div class="range__output">
-                  <div class="range__output-item">
-                    до&nbsp;<span>1</span>
+                <form action="#">
+                  <div class="range__range-input">
+                    <div id="slider-range-height"></div>
                   </div>
-                  <div class="range__output-item">
-                    до&nbsp;<span>240</span>
+                  <div class="range__output">
+                    <div class="range__output-item">
+                      <span>до</span>
+                      <input type="number" id="height-output" readonly>
+                    </div>
+                    <div class="range__output-item">
+                      <span>до</span>
+                      <input type="number" id="height-output2" readonly>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
             <div class="sidebar__width width range sidebar__row">
@@ -532,18 +543,21 @@
                 </div>
               </div>
               <div class="width__body sidebar__col-body">
-                <div class="range__range-input">
-                  <input type="range" min="50" max="100" value="100" step="1" id="priceRange">
-                  <input type="range" min="50" max="100" value="0" step="1" id="priceRange2">
-                </div>
-                <div class="range__output">
-                  <div class="range__output-item">
-                    до&nbsp;<span>400</span>
+                <form action="#">
+                  <div class="range__range-input">
+                    <div id="slider-range-length"></div>
                   </div>
-                  <div class="range__output-item">
-                    до&nbsp;<span>2000</span>
+                  <div class="range__output">
+                    <div class="range__output-item">
+                      <span>до</span>
+                      <input type="number" id="length-output" readonly>
+                    </div>
+                    <div class="range__output-item">
+                      <span>до</span>
+                      <input type="number" id="length-output2" readonly>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -593,85 +607,98 @@
             </div>
             <div class="catalog__row">
               <div class="catalog__col">
-                <div class="catalog__col-image">
-                  <img src="common.blocks/catalog/catalog__catalogDivan.png" alt="img">
-                </div>
-                <div class="catalog__col-body">
-                  <div class="catalog__col-text">
-                    Диван-кровать Вилли  Рогожка, розовый
+                <div class="сard-product">
+                  <div class="сard-product__image">
+                    <img src="common.blocks/catalog/catalog__catalogDivan.png" alt="img">
                   </div>
-                  <div class="catalog__col-price">
-                    <span>4234&nbsp;₽</span>
-                    <span class="catalog__col-price-old">21&nbsp;000&nbsp;₽</span>
-                  </div>
-                </div>
-              </div>
-              <div class="catalog__col">
-                <div class="catalog__col-image">
-                  <img src="common.blocks/catalog/catalog__catalogDivan2.png" alt="img">                </div>
-                <div class="catalog__col-body">
-                  <div class="catalog__col-text">
-                    Диван-кровать Шарм-Дизайн ЕвроШарм серый с беж
-                  </div>
-                  <div class="catalog__col-price">
-                    <span>12&nbsp;244&nbsp;₽</span>
-                    <span class="catalog__col-price-old">21&nbsp;000&nbsp;₽</span>
+                  <div class="сard-product__body">
+                    <div class="сard-product__text">
+                      Диван-кровать Вилли  Рогожка, розовый
+                    </div>
+                    <div class="сard-product__price">
+                      <span>4234&nbsp;₽</span>
+                      <span class="сard-product__price-old">21&nbsp;000&nbsp;₽</span>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="catalog__col">
-                <div class="catalog__col-image">
-                  <img src="common.blocks/catalog/catalog__catalogDivan3.png" alt="img">
-                </div>
-                <div class="catalog__col-body">
-                  <div class="catalog__col-text">
-                    Диван-кровать Бит-2 Латте
+                <div class="сard-product">
+                  <div class="сard-product__image">
+                    <img src="common.blocks/catalog/catalog__catalogDivan2.png" alt="img">
                   </div>
-                  <div class="catalog__col-price">
-                    <span>7000&nbsp;₽</span>
-                    <span class="catalog__col-price-old">21&nbsp;000&nbsp;₽</span>
-                  </div>
-                </div>
-              </div>
-              <div class="catalog__col">
-                <div class="catalog__col-image">
-                  <img src="common.blocks/catalog/catalog__catalogDivan4.png" alt="img">
-                </div>
-                <div class="catalog__col-body">
-                  <div class="catalog__col-text">
-                    Диван-кровать Вилли  Рогожка, розовый
-                  </div>
-                  <div class="catalog__col-price">
-                    <span>4234&nbsp;₽</span>
-                    <span class="catalog__col-price-old">21&nbsp;000&nbsp;₽</span>
+                  <div class="сard-product__body">
+                    <div class="сard-product__text">
+                      Диван-кровать Шарм-Дизайн  ЕвроШарм серый с беж
+                    </div>
+                    <div class="сard-product__price">
+                      <span>12&nbsp;244&nbsp;₽</span>
+                      <span class="сard-product__price-old">21&nbsp;000&nbsp;₽</span>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="catalog__col">
-                <div class="catalog__col-image">
-                  <img src="common.blocks/catalog/catalog__catalogDivan2.png" alt="img">
-                </div>
-                <div class="catalog__col-body">
-                  <div class="catalog__col-text">
-                    Диван-кровать Вилли  Рогожка, розовый
+                <div class="сard-product">
+                  <div class="сard-product__image">
+                    <img src="common.blocks/catalog/catalog__catalogDivan3.png" alt="img">
                   </div>
-                  <div class="catalog__col-price">
-                    <span>4234&nbsp&nbsp;₽</span>
-                    <span class="catalog__col-price-old">21&nbsp;000&nbsp;₽</span>
+                  <div class="сard-product__body">
+                    <div class="сard-product__text">
+                      Диван-кровать Бит-2 Латте
+                    </div>
+                    <div class="сard-product__price">
+                      <span>7000&nbsp;₽</span>
+                      <span class="сard-product__price-old">21&nbsp;000&nbsp;₽</span>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="catalog__col">
-                <div class="catalog__col-image">
-                  <img src="common.blocks/catalog/catalog__catalogDivan3.png" alt="img">
-                </div>
-                <div class="catalog__col-body">
-                  <div class="catalog__col-text">
-                    Диван-кровать Вилли  Рогожка, розовый
+                <div class="сard-product">
+                  <div class="сard-product__image">
+                    <img src="common.blocks/catalog/catalog__catalogDivan4.png" alt="img">
                   </div>
-                  <div class="catalog__col-price">
-                    <span>4234&nbsp;₽</span>
-                    <span class="catalog__col-price-old">21&nbsp;000&nbsp;₽</span>
+                  <div class="сard-product__body">
+                    <div class="сard-product__text">
+                      Диван-кровать Вилли  Рогожка, розовый
+                    </div>
+                    <div class="сard-product__price">
+                      <span>4234&nbsp;₽</span>
+                      <span class="сard-product__price-old">21&nbsp;000&nbsp;₽</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="catalog__col">
+                <div class="сard-product">
+                  <div class="сard-product__image">
+                    <img src="common.blocks/catalog/catalog__catalogDivan.png" alt="img">
+                  </div>
+                  <div class="сard-product__body">
+                    <div class="сard-product__text">
+                      Диван-кровать Вилли  Рогожка, розовый
+                    </div>
+                    <div class="сard-product__price">
+                      <span>4234&nbsp;₽</span>
+                      <span class="сard-product__price-old">21&nbsp;000&nbsp;₽</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="catalog__col">
+                <div class="сard-product">
+                  <div class="сard-product__image">
+                    <img src="common.blocks/catalog/catalog__catalogDivan2.png" alt="img">
+                  </div>
+                  <div class="сard-product__body">
+                    <div class="сard-product__text">
+                      Диван-кровать Вилли  Рогожка, розовый
+                    </div>
+                    <div class="сard-product__price">
+                      <span>4234&nbsp;₽</span>
+                      <span class="сard-product__price-old">21&nbsp;000&nbsp;₽</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -794,7 +821,7 @@
           </nav>
         </div>
         <div class="footer__contacts footer__col">
-          <a href="tel:+7 987 654-32-10" class="footer__contacts-phone">
+          <a href="tel:+7 987 654-32-10" class="footer__contacts-phone phone-num">
             +7 987 654-32-10
           </a>
           <div class="footer__contacts-regime">
@@ -803,8 +830,8 @@
           <a href="mailto:example@example.ru" class="footer__contacts-mail">
             example@example.ru
           </a>
-          <div class="footer__social-network">
-            <a href="" class="footer__social-network-item">
+          <div class="footer__social-network social-network">
+            <a href="" class="social-network__item">
               <svg class="inst-icon">
                 <use xlink:href="#inst-icon"></use>
               </svg>
@@ -826,7 +853,6 @@
       </div>
     </footer>
   </div>
-
 
 <!-- TestOnlineBees end -->
 </body>

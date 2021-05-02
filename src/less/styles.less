@@ -3,7 +3,37 @@
 //Шрифт
 @font-face {
   font-family: "Montserrat";
-  src: url("../assets/fonts/montserrat.ttf") format("truetype");
+  src: url("../assets/fonts/montserrat.ttf") format("TrueType"),
+       url("../assets/fonts/montserrat.woff") format("woff"),
+       url("../assets/fonts/montserrat.woff2") format("woff2")
+  ;
+}
+@font-face {
+  font-family: "Montserrat-light";
+  src: url("../assets/fonts/montserratlight.ttf") format("TrueType"),
+  url("../assets/fonts/montserratlight.woff") format("woff"),
+  url("../assets/fonts/montserratlight.woff2") format("woff2")
+;
+}
+@font-face {
+  font-family: "Montserrat-black";
+  src: url("../assets/fonts/montserratblack.ttf") format("TrueType"),
+  url("../assets/fonts/montserratblack.woff") format("woff"),
+  url("../assets/fonts/montserratblack.woff2") format("woff2")
+  ;
+}
+@font-face {
+  font-family: "Montserrat-bold";
+  src: url("../assets/fonts/montserratbold.woff") format("woff"),
+       url("../assets/fonts/montserratbold.woff2") format("woff2")
+;
+}
+@font-face {
+  font-family: "Montserrat-hairline";
+  src: url("../assets/fonts/montserrathairline.ttf") format("TrueType"),
+  url("../assets/fonts/montserrathairline.woff") format("woff"),
+  url("../assets/fonts/montserrathairline.woff2") format("woff2")
+;
 }
 html {
   font-family: "Montserrat",Arial, sans-serif;
@@ -42,20 +72,22 @@ body{
   height: 100%;
   overflow: hidden;
 }
-.stop-scroll{
-  position: relative;
-  overflow: hidden;
-  &:after{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    background: rgba(0,0,0,.25);
-    z-index: 10;
+.overlay{
+  display: none;
+  position: fixed;
+  top: @headerMobHeight;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: rgba(0,0,0,.25);
+  z-index: 10;
+  &.fade-in-overlay{
+    display: block;
   }
+}
+.stop-scroll{
+  overflow: hidden;
 }
 .container{
   width: 100%;
@@ -67,23 +99,111 @@ body{
   flex: 1 1 auto;
 }
 //Icons
+.burger-icon{
+  width: 100%;
+  max-width: 24px;
+  height: 100%;
+  max-height: 24px;
+  fill: #fff;
+  &-mob{
+    fill: #1A1A1A;
+  }
+}
+.header-mob-logo{
+  width: 100%;
+  max-width: 80px;
+  height: 100%;
+  max-height: 38px;
+}
+.header-drop-menu-icon{
+  width: 100%;
+  max-width: 38px;
+  height: 100%;
+  max-height: 38px;
+  fill: #fff;
+  &-mob{
+    width: 100%;
+    max-width: 28px;
+    height: 100%;
+    max-height: 28px;
+    fill: #fff;
+  }
+}
 .close-icon{
   width: 100%;
   max-width: 15px;
   height: 100%;
   max-height: 15px;
+  fill: #FFFFFF;
 }
 .inst-icon{
   width: 100%;
   max-width: 18px;
   height: 100%;
   max-height: 18px;
+  fill: #fff;
 }
 .drop-arrow-icon{
   width: 100%;
   max-width: 8px;
   height: 100%;
   max-height: 5px;
+  fill: #A0A0A0;
+}
+.filter-icon{
+  fill: @siteBaseColor;
+}
+.search-icon{
+  width: 100%;
+  max-width: 18px;
+  height: 100%;
+  max-height: 18px;
+  fill: #A0A0A0;
+  &-mob{
+    fill: #1A1A1A;
+  }
+}
+.phone-icon{
+  width: 100%;
+  max-width: 18px;
+  height: 100%;
+  max-height: 18px;
+  fill: #1A1A1A;
+}
+.footer-logo{
+  width: 100%;
+  max-width: 160px;
+  height: 100%;
+  max-height: 80px;
+}
+//Стили для номера телефона
+.phone-num{
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4em;
+}
+//Стили для социальных сетей
+.social-network{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  &__item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: @siteBaseColor;
+    border-radius: 50%;
+  }
+}
+//Заголовок страниц
+.page-title{
+  margin-bottom: 40px;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 1.2em;
 }
 //Хлебные крошки
 .breadcrumbs{
@@ -113,6 +233,90 @@ body{
     }
   }
 }
+//Фильтр
+.filter{
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  &.fade-in{
+    display: none;
+  }
+  &__item{
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    color: #fff;
+    background: @siteBaseColor;
+    border-radius: 4px;
+    margin-right: 8px;
+    &-text{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.4em;
+      margin-right: 8px;
+    }
+    &-icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__link-all{
+    margin: 0 8px;
+    color: #A0A0A0;
+    border-bottom: 1px dashed #A0A0A0;
+    transition: all .4s ease-in-out;
+    &:hover{
+      border-bottom: none;
+      transition: all .4s ease-in-out;
+    }
+  }
+}
+//Карточка товара
+.сard-product{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #fff;
+  &__body{
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 264px;
+    overflow: hidden;
+    img{
+      object-fit: cover;
+    }
+  }
+  &__text{
+    font-size: 14px;
+    line-height: 1.4em;
+    margin-bottom: 4px;
+  }
+  &__price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 135px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.4em;
+    &-old{
+      margin-left: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      text-decoration: line-through;
+      color: #A0A0A0;
+    }
+  }
+}
 //О компании
 .about-company{
   margin-bottom: 80px;
@@ -134,6 +338,27 @@ body{
 
   }
 }
+//Jquery-ui slider
+.ui-slider{
+  height: 4px;
+  border: 0 !important;
+  .ui-slider-handle{
+    top: -11px;
+    width: 25px;
+    height: 25px;
+    border: 0 !important;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0px 2px 2px rgba(50, 50, 71, 0.06), 0px 2px 4px rgba(50, 50, 71, 0.06);
+    cursor: pointer;
+  }
+}
+.ui-widget-content{
+  background: @siteBaseColor;
+}
+.ui-state-hover,.ui-state-active{
+  background: darken(#fff,15%) !important;
+}
 //input
 .range{
   &__range-input{
@@ -147,17 +372,30 @@ body{
     justify-content: space-between;
     margin-bottom: 32px;
     &-item{
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      width: auto;
+      width: 100%;
+      max-width: 44%;
       border: 1px solid #C4C4C4;
       border-radius: 4px;
-      padding: 6px 12px;
+      padding: 6px 0;
       color: #A0A0A0;
       span{
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
         color: @baseFontColor;
+      }
+      input[type= "number"]{
+        font-size: 14px;
+        line-height: 1.2;
+        width: 100%;
+        padding: 0;
+        padding-left: 33px;
       }
     }
   }
@@ -279,12 +517,43 @@ input[type = "range"]{
   }
 }
 //Медиа запросы
+@media only screen and (max-width: 1024px){
+  .filter{
+    flex-wrap: wrap;
+    &__item{
+      margin-bottom: 8px;
+    }
+  }
+}
 @media only screen and (max-width: 768px){
   .content{
     padding-top: calc( @headerMobHeight + 24px);
   }
   .breadcrumbs{
     font-size: 12px;
+  }
+  .filter{
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 26px;
+    &__item{
+      margin-right: 0;
+    }
+    &__link-all{
+      margin: 8px 0;
+    }
+  }
+  .сard-product{
+    &__image{
+      min-height: 124px;
+      transition: all .4s ease-in-out;
+    }
+    &__text{
+      font-size: 12px;
+    }
+    &__price{
+      font-size: 14px;
+    }
   }
   .about-company{
     margin-bottom: 60px;

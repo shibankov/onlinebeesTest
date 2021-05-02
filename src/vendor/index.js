@@ -1,5 +1,8 @@
 /* eslint-disable */
 require("expose-loader?$!expose-loader?jQuery!jquery");
+/* jquery-ui*/
+require("expose-loader?jquery-ui-dist!jquery-ui-dist/jquery-ui.min");
+require("expose-loader?jquery-ui-dist!jquery-ui-dist/jquery-ui.min.css");
 
 // flexslider
 // require("./flexslider2/flexslider.css")
@@ -49,7 +52,7 @@ require("expose-loader?$!expose-loader?jQuery!jquery");
 // require("expose-loader?slider!jquery-ui/tabs");
 
 // touch support for jquery ui
-// require("jquery-ui-touch-punch");
+require("jquery-ui-touch-punch");
 
 // highslide
 // require("expose-loader?hs!./highslide/highslide/highslide-with-gallery.js");
