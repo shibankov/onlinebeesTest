@@ -21,13 +21,13 @@ $(document).ready(()=>{
         $(".overlay").toggleClass("fade-in-overlay");
         $("body").toggleClass("stop-scroll");
     });
-    $(".sidebar__row").click(function (event) {
-        $(this).find(".sidebar__col-body").toggleClass('fade-in');
-        $(this).find(".sidebar__col-title-arrow").toggleClass('rotate');
+    $(".sidebar__row").click((event)=>{
+        $(event.currentTarget).find(".sidebar__col-body").toggleClass('fade-in');
+        $(event.currentTarget).find(".sidebar__col-title-arrow").toggleClass('rotate');
     });
 });
 //jquery-ui
-$( function() {
+$(()=>{
     $( "#slider-range-price" ).slider({
         range: true,
         min: 0,
@@ -41,7 +41,7 @@ $( function() {
     $( "#price-output" ).val($( "#slider-range-price" ).slider( "values", 0 ));
     $( "#price-output2" ).val($( "#slider-range-price" ).slider( "values", 1 ));
 } );
-$( function() {
+$(()=>{
     $( "#slider-range-height" ).slider({
         range: true,
         min: 0,
@@ -55,7 +55,7 @@ $( function() {
     $( "#height-output" ).val($( "#slider-range-height" ).slider( "values", 0 ));
     $( "#height-output2" ).val($( "#slider-range-height" ).slider( "values", 1 ));
 } );
-$( function() {
+$(()=>{
     $( "#slider-range-length" ).slider({
         range: true,
         min: 400,

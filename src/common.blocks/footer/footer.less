@@ -14,17 +14,30 @@
   line-height: 1.4em;
   color:@footerColor;
   &-top{
-    margin-bottom: 32px;
+    flex-direction: column;
+    margin-bottom: 24px;
+    @media only screen and (min-width: 768px){
+      margin-bottom: 32px;
+      flex-direction: row;
+    }
   }
   &-bottom{
-    align-items: center;
+    flex-direction: column;
+    align-items:flex-start;
+    @media only screen and (min-width: 768px){
+      flex-direction: row;
+      align-items: center;
+    }
   }
   &__col{
     display: flex;
     flex-direction: column;
     width: 100%;
     &:not(:last-child){
-      margin-right: 16px;
+      margin-right: 8px;
+      @media only screen and (min-width: 768px){
+        margin-right: 16px;
+      }
     }
     &-title{
       margin-bottom: 16px;
@@ -35,15 +48,25 @@
     }
   }
   &__company{
+    order: 3;
     max-width: 286px;
+    @media only screen and (min-width: 768px){
+      order: inherit;
+    }
   }
   &__logo{
-    display: flex;
+    display: none;
     align-items: flex-start;
     margin-bottom: 24px;
+    @media only screen and (min-width: 768px){
+      display: flex;
+    }
   }
   &__address{
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+    @media only screen and (min-width: 768px){
+      margin-bottom: 16px;
+    }
   }
   &__confid-link{
     color:@footerColor;
@@ -56,7 +79,11 @@
     }
   }
   &__catalog{
+    display: none;
     max-width: 266px;
+    @media only screen and (min-width: 768px){
+      display: block;
+    }
     &-row{
       display: flex;
       justify-content: space-between;
@@ -75,6 +102,14 @@
   }
   &__magazine{
     max-width: 140px;
+    margin-right: 0;
+    margin-bottom: 16px;
+    &-title{
+      display: none;
+      @media only screen and (min-width: 768px){
+        display: inline-block;
+      }
+    }
     &-link{
       display: inline-block;
       margin-bottom: 8px;
@@ -88,8 +123,12 @@
   &__contacts{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     max-width: 205px;
+    margin-bottom: 24px;
+    @media only screen and (min-width: 768px){
+      align-items: flex-end;
+    }
     &-phone{
       margin-bottom: 8px;
       font-size: 24px;
@@ -102,7 +141,7 @@
       margin-bottom: 16px;
     }
     &-mail{
-      margin-bottom: 42px;
+      margin-bottom: 16px;
       color: #fff;
       text-decoration: underline;
       transition: all .4s ease-in-out;
@@ -111,6 +150,15 @@
         text-decoration: none;
         transition: all .4s ease-in-out;
       }
+      @media only screen and (min-width: 768px){
+        margin-bottom: 42px;
+      }
+    }
+  }
+  &__copyright{
+    margin-bottom: 8px;
+    @media only screen and (min-width: 768px){
+      margin-bottom: 0;
     }
   }
   &__developer-link{
@@ -124,55 +172,3 @@
     }
   }
 }
-//Медиа запросы
-@media only screen and (max-width: 1024px){
-  .footer{
-    &__col{
-      &:not(:last-child){
-        margin-right: 8px;
-      }
-    }
-  }
-}
-@media only screen and (max-width: 768px){
-  .footer{
-    &-top{
-      flex-direction: column;
-      margin-bottom: 24px;
-    }
-    &-bottom{
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    &__logo{
-      display: none;
-    }
-    &__catalog{
-      display: none;
-    }
-    &__magazine{
-      margin-right: 0;
-      margin-bottom: 16px;
-      &-title{
-        display: none;
-      }
-    }
-    &__copyright{
-      margin-bottom: 8px;
-    }
-    &__contacts{
-      align-items: flex-start;
-      margin-bottom: 24px;
-      &-mail{
-        margin-bottom: 16px;
-      }
-    }
-    &__adress{
-      margin-bottom: 8px;
-    }
-    &__company{
-      order: 3;
-    }
-  }
-}
-

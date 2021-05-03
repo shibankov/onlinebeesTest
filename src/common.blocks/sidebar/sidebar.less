@@ -15,22 +15,102 @@
 //Sidebar
 .sidebar-mob{
   &__header{
-    display: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    margin-bottom: 18px;
+    &:after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left:-16px;
+      width: calc(100% + 32px);
+      height: 2px;
+      background: #C4C4C4;
+
+    }
+    &-arrow{
+      transform: rotate(90deg);
+      svg path{
+        fill: #1A1A1A;
+      }
+    }
+    &-title{
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.4em;
+    }
+    &-close-icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    @media only screen and (min-width: 768px){
+      display: none;
+    }
   }
 }
 .sidebar {
+  position: fixed;
+  //right: 0;
+  right: -100%;
   width: 100%;
-  max-width: 239px;
-
+  max-width: 271px;
+  height: calc(100% - @headerMobHeight + 5px);
+  top: calc(@headerMobHeight + 5px);
+  z-index: 9989;
+  overflow: auto;
+  padding: 0 16px 16px;
+  background: @sidebarBg;
+  box-shadow: 0 4px 5px rgba(50, 50, 71, 0.16);
+  transition: all .4s ease-in-out .1s;
+  &.fade-in{
+    right: 0;
+    transition: all .4s ease-in-out;
+  }
+  @media only screen and (min-width: 768px){
+    position: relative;
+    right: 0;
+    top: 0;
+    height: auto;
+    box-shadow: none;
+  }
   &__mob-row{
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding-bottom: 26px;
+    border-bottom: 2px solid #C4C4C4;
     font-size: 14px;
     line-height: 1.4em;
     font-weight: 600;
+    cursor: pointer;
+    @media only screen and (min-width: 768px){
+      display: none;
+    }
     &-icon{
       margin-right: 8px;
+    }
+  }
+  &__col-body{
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: margin-bottom .3s ease-in-out .1s,opacity .1s ease-in-out ,visibility .1s ease-in-out ,height .4s ease-in-out .2s;
+    &.fade-in{
+      height: auto;
+      opacity: 1;
+      visibility: visible;
+      transition: margin-bottom .3s ease-in-out .1s,visibility .3s ease-in-out .1s,opacity .3s ease-in-out .1s,height .4s ease-in-out;
+      margin-bottom: 24px;
+    }
+    @media only screen and (min-width: 768px){
+      height: auto;
+      visibility: visible;
+      opacity: 1;
     }
   }
   &__col-title{
@@ -43,16 +123,30 @@
     line-height: 1.4em;
     color: #333333;
     &-arrow{
-      display: none;
+      display: block;
+      transition: all .4s ease-in-out;
+      &.rotate{
+        transform: rotate(180deg);
+        transition: all .4s ease-in-out;
+      }
+      @media only screen and (min-width: 768px){
+        display: none;
+      }
     }
   }
 }
 .categories{
-  margin-bottom: 32px;
+  @media only screen and (min-width: 768px){
+    margin-bottom: 32px;
+  }
   &__list{
     display: flex;
     flex-direction: column;
     padding-left: 21px;
+    font-size: 12px;
+    @media only screen and (min-width: 768px){
+      font-size: 14px;
+    }
     li{
       &:not(:last-child){
         margin-bottom: 12px;
@@ -83,9 +177,29 @@
 }
 .discount{
   margin-bottom: 39px;
+  @media only screen and (min-width: 768px){
+    flex-direction: row;
+    align-items: center;
+  }
+  &__title{
+    flex-direction: column;
+    align-items: flex-start;
+    @media only screen and (min-width: 768px){
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  &__switch{
+    margin-top: 20px;
+    @media only screen and (min-width: 768px){
+      margin-top: 0;
+    }
+  }
 }
 .materials{
-  margin-bottom: 32px;
+  @media only screen and (min-width: 768px){
+    margin-bottom: 32px;
+  }
   &__item{
     margin-bottom: 8px;
   }
@@ -96,107 +210,6 @@
     &:hover{
       border-bottom: none;
       transition: all .4s ease-in-out;
-    }
-  }
-}
-//Медиа запросы
-@media only screen and (max-width: 768px){
-  .sidebar-mob{
-    &__header{
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
-      margin-bottom: 18px;
-      &:after{
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left:-16px;
-        width: calc(100% + 32px);
-        height: 2px;
-        background: #C4C4C4;
-
-      }
-      &-arrow{
-        transform: rotate(90deg);
-        svg path{
-          fill: #1A1A1A;
-        }
-      }
-      &-title{
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 1.4em;
-      }
-      &-close-icon{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-    }
-  }
-  .sidebar{
-    position: fixed;
-    //right: 0;
-    right: -100%;
-    height: calc(100% - @headerMobHeight + 5px);
-    top: calc(@headerMobHeight + 5px);
-    z-index: 9989;
-    overflow: auto;
-    padding: 0 16px 16px;
-    background: @sidebarBg;
-    box-shadow: 0 4px 5px rgba(50, 50, 71, 0.16);
-    transition: all .4s ease-in-out .1s;
-    &.fade-in{
-      right: 0;
-      transition: all .4s ease-in-out;
-    }
-    &__row{
-      cursor: pointer;
-    }
-    &__mob-row{
-      display: flex;
-      padding-bottom: 26px;
-      border-bottom: 2px solid #C4C4C4;
-      cursor: pointer;
-    }
-    &__col-body{
-      height: 0;
-      overflow: hidden;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity .1s ease-in-out ,visibility .1s ease-in-out ,height .4s ease-in-out .2s;
-      &.fade-in{
-        overflow: visible;
-        height: auto;
-        opacity: 1;
-        visibility: visible;
-        transition: visibility .3s ease-in-out .1s,opacity .3s ease-in-out .1s,height .4s ease-in-out;
-      }
-    }
-    &__col-title{
-      &-arrow{
-        display: block;
-        transition: all .4s ease-in-out;
-        &.rotate{
-          transform: rotate(180deg);
-          transition: all .4s ease-in-out;
-        }
-      }
-    }
-    .categories{
-      &__list{
-        font-size: 12px;
-      }
-    }
-    .discount{
-      &__title{
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
   }
 }

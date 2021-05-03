@@ -5,12 +5,20 @@
   &__wrapper{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 152px;
+    flex-direction: column;
+    margin-bottom: 116px;
+    @media only screen and (min-width: 768px){
+      flex-direction: row;
+      margin-bottom: 152px;
+    }
   }
   &__body{
     width: 100%;
     max-width: 876px;
-    margin-left: 32px;
+    margin-left: 0;
+    @media only screen and (min-width: 768px){
+      margin-left: 16px;
+    }
   }
   &__row{
     display: flex;
@@ -19,7 +27,7 @@
   }
   &__col{
     width: 100%;
-    max-width: 32%;
+    max-width: 48%;
     margin-bottom: 16px;
     overflow: hidden;
     cursor: pointer;
@@ -27,28 +35,10 @@
     &:hover{
       box-shadow: 0px 20px 20px rgba(50, 50, 71, 0.12), 0px 32px 40px rgba(50, 50, 71, 0.12);
       transition: all .3s ease-in-out;
-      transform: translateY(-2px) translateZ(10px);
+      transform: translateZ(10px);
+    }
+    @media only screen and (min-width: 960px){
+      max-width: 32%;
     }
   }
 }
-//Медиа запросы
-
-@media only screen and (max-width: 768px){
-  .catalog{
-    &__wrapper{
-      flex-direction: column;
-      margin-bottom: 116px;
-    }
-    &__body{
-      margin-left: 0;
-    }
-    &__title{
-      margin-bottom: 24px;
-      font-size: 24px;
-    }
-    &__col{
-      max-width: 48%;
-    }
-  }
-}
-

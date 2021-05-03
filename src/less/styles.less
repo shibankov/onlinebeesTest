@@ -97,6 +97,10 @@ body{
 }
 .content{
   flex: 1 1 auto;
+  padding-top: calc( @headerMobHeight + 24px);
+  @media only screen and (min-width: 768px){
+    padding-top: 0;
+  }
 }
 //Icons
 .burger-icon{
@@ -200,16 +204,23 @@ body{
 }
 //Заголовок страниц
 .page-title{
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 24px;
   line-height: 1.2em;
+  @media only screen and (min-width: 768px){
+    margin-bottom: 40px;
+    font-size: 48px;
+  }
 }
 //Хлебные крошки
 .breadcrumbs{
   margin-bottom: 16px;
-  font-size: 14px;
   line-height: 1.4em;
+  font-size: 12px;
+  @media only screen and (min-width: 768px){
+    font-size: 14px;
+  }
   &__list{
     display: flex;
   }
@@ -236,8 +247,14 @@ body{
 //Фильтр
 .filter{
   display: flex;
-  align-items: center;
-  margin-bottom: 40px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 26px;
+  @media only screen and (min-width: 1024px){
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40px;
+  }
   &.fade-in{
     display: none;
   }
@@ -245,10 +262,14 @@ body{
     display: flex;
     align-items: center;
     padding: 6px 12px;
+    margin-bottom: 8px;
     color: #fff;
     background: @siteBaseColor;
     border-radius: 4px;
-    margin-right: 8px;
+    @media only screen and (min-width: 1024px){
+      margin-bottom: 0;
+      margin-right: 8px;
+    }
     &-text{
       font-weight: 400;
       font-size: 14px;
@@ -262,10 +283,12 @@ body{
     }
   }
   &__link-all{
-    margin: 0 8px;
     color: #A0A0A0;
     border-bottom: 1px dashed #A0A0A0;
     transition: all .4s ease-in-out;
+    @media only screen and (min-width: 1024px){
+      margin-left: 4px;
+    }
     &:hover{
       border-bottom: none;
       transition: all .4s ease-in-out;
@@ -288,16 +311,22 @@ body{
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 264px;
+    min-height: 124px;
     overflow: hidden;
+    @media only screen and (min-width: 768px){
+      min-height: 264px;
+    }
     img{
       object-fit: cover;
     }
   }
   &__text{
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.4em;
     margin-bottom: 4px;
+    @media only screen and (min-width: 768px){
+      font-size: 14px;
+    }
   }
   &__price{
     display: flex;
@@ -306,8 +335,11 @@ body{
     width: 100%;
     max-width: 135px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.4em;
+    @media only screen and (min-width: 768px){
+      font-size: 18px;
+    }
     &-old{
       margin-left: 8px;
       font-weight: 400;
@@ -319,17 +351,26 @@ body{
 }
 //О компании
 .about-company{
-  margin-bottom: 80px;
+  margin-bottom: 60px;
+  @media only screen and (min-width: 768px){
+    margin-bottom: 80px;
+  }
   &__title{
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 24px;
     line-height: 1.3em;
-
+    @media only screen and (min-width: 768px){
+      margin-bottom: 24px;
+      font-size: 36px;
+    }
   }
   &__text{
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.4em;
+    @media only screen and (min-width: 768px){
+      font-size: 18px;
+    }
     p{
       &:not(:last-child){
         margin-bottom: 20px;
@@ -344,8 +385,8 @@ body{
   border: 0 !important;
   .ui-slider-handle{
     top: -11px;
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     border: 0 !important;
     border-radius: 50%;
     background: #fff;
@@ -378,17 +419,21 @@ body{
       justify-content: center;
       text-align: center;
       width: 100%;
-      max-width: 44%;
+      max-width: 105px;
       border: 1px solid #C4C4C4;
       border-radius: 4px;
       padding: 6px 0;
       color: #A0A0A0;
+      font-size: 12px;
+      @media only screen and (min-width: 768px){
+        font-size: 14px;
+      }
       span{
         position: absolute;
         top: 50%;
         left: 10px;
         transform: translateY(-50%);
-        color: @baseFontColor;
+        color: #A0A0A0;
       }
       input[type= "number"]{
         font-size: 14px;
@@ -497,6 +542,10 @@ input[type = "range"]{
     cursor: pointer;
     display: flex;
     align-items: center;
+    font-size: 12px;
+    @media only screen and (min-width: 768px){
+      font-size: 14px;
+    }
     &:before{
       content:'';
       appearance: none;
@@ -516,63 +565,5 @@ input[type = "range"]{
     }
   }
 }
-//Медиа запросы
-@media only screen and (max-width: 1024px){
-  .filter{
-    flex-wrap: wrap;
-    &__item{
-      margin-bottom: 8px;
-    }
-  }
-}
-@media only screen and (max-width: 768px){
-  .content{
-    padding-top: calc( @headerMobHeight + 24px);
-  }
-  .breadcrumbs{
-    font-size: 12px;
-  }
-  .filter{
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 26px;
-    &__item{
-      margin-right: 0;
-    }
-    &__link-all{
-      margin: 8px 0;
-    }
-  }
-  .сard-product{
-    &__image{
-      min-height: 124px;
-      transition: all .4s ease-in-out;
-    }
-    &__text{
-      font-size: 12px;
-    }
-    &__price{
-      font-size: 14px;
-    }
-  }
-  .about-company{
-    margin-bottom: 60px;
-    &__title{
-      font-size: 24px;
-      margin-bottom: 16px;
-    }
-    &__text{
-      font-size: 14px;
-    }
-  }
-  .range{
-    &__output-item{
-      font-size: 12px;
-    }
-  }
-  .checkbox-custom{
-    label{
-      font-size: 12px;
-    }
-  }
-}
+
+
