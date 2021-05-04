@@ -2,41 +2,36 @@
 @import './reset.less';
 //Шрифт
 @font-face {
-  font-family: "Montserrat";
-  src: url("../assets/fonts/montserrat.ttf") format("TrueType"),
-       url("../assets/fonts/montserrat.woff") format("woff"),
-       url("../assets/fonts/montserrat.woff2") format("woff2")
-  ;
-}
-@font-face {
-  font-family: "Montserrat-light";
-  src: url("../assets/fonts/montserratlight.ttf") format("TrueType"),
-  url("../assets/fonts/montserratlight.woff") format("woff"),
-  url("../assets/fonts/montserratlight.woff2") format("woff2")
+  font-family: "Montserrat-Regular";
+  src: url("../assets/fonts/Montserrat-Regular.ttf") format("TrueType"),
+  url("../assets/fonts/Montserrat-Regular.woff") format("woff"),
+  url("../assets/fonts/Montserrat-Regular.woff2") format("woff2")
 ;
 }
 @font-face {
-  font-family: "Montserrat-black";
-  src: url("../assets/fonts/montserratblack.ttf") format("TrueType"),
-  url("../assets/fonts/montserratblack.woff") format("woff"),
-  url("../assets/fonts/montserratblack.woff2") format("woff2")
-  ;
-}
-@font-face {
-  font-family: "Montserrat-bold";
-  src: url("../assets/fonts/montserratbold.woff") format("woff"),
-       url("../assets/fonts/montserratbold.woff2") format("woff2")
+  font-family: "Montserrat-Medium";
+  src: url("../assets/fonts/Montserrat-Medium.ttf") format("TrueType"),
+       url("../assets/fonts/Montserrat-Medium.woff") format("woff"),
+       url("../assets/fonts/Montserrat-Medium.woff2") format("woff2")
 ;
 }
 @font-face {
-  font-family: "Montserrat-hairline";
-  src: url("../assets/fonts/montserrathairline.ttf") format("TrueType"),
-  url("../assets/fonts/montserrathairline.woff") format("woff"),
-  url("../assets/fonts/montserrathairline.woff2") format("woff2")
+  font-family: "Montserrat-Bold";
+  src: url("../assets/fonts/Montserrat-Bold.ttf") format("TrueType"),
+       url("../assets/fonts/Montserrat-Bold.woff") format("woff"),
+       url("../assets/fonts/Montserrat-Bold.woff2") format("woff2")
 ;
 }
+@font-face {
+  font-family: "Montserrat-SemiBold";
+  src: url("../assets/fonts/Montserrat-SemiBold.ttf") format("TrueType"),
+  url("../assets/fonts/Montserrat-SemiBold.woff") format("woff"),
+  url("../assets/fonts/Montserrat-SemiBold.woff2") format("woff2")
+;
+}
+
 html {
-  font-family: "Montserrat",Arial, sans-serif;
+  font-family: "Montserrat-Regular",Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   scroll-behavior: smooth;
@@ -183,6 +178,7 @@ body{
 //Стили для номера телефона
 .phone-num{
   display: inline-block;
+  font-family: "Montserrat-SemiBold",Arial, sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 1.4em;
@@ -205,6 +201,7 @@ body{
 //Заголовок страниц
 .page-title{
   margin-bottom: 24px;
+  font-family: "Montserrat-SemiBold",Arial, sans-serif;
   font-weight: 600;
   font-size: 24px;
   line-height: 1.2em;
@@ -357,6 +354,7 @@ body{
   }
   &__title{
     margin-bottom: 16px;
+    font-family: "Montserrat-SemiBold",Arial, sans-serif;
     font-weight: 600;
     font-size: 24px;
     line-height: 1.3em;
